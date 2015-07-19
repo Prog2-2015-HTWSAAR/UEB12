@@ -13,7 +13,7 @@
 #include <cstring>
 #include <fstream>
 #include <math.h>
-#include <Queue.h>
+#include "Queue.h"
 //Konstanten
 //Seperators
 const char* QueueDialog::SPACER = " ";
@@ -57,6 +57,7 @@ QueueDialog::~QueueDialog() {}
 * @details HauptDialog Auswahl Auto Manuell Exit
 */
 void initDia(){
+	Queue q = new Queue;
 	
 }
 void QueueDialog::qDialog(string &fileName) {
