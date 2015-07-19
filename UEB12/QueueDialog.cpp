@@ -66,6 +66,7 @@ void QueueDialog::qDialog(MyQueue<Person>* q) {
 	Person* personpointer = NULL;
 		do {
 			try {
+				cout << "--------Queue--------" << endl;
 				cout << *q << endl;
 
 				outputOptions();

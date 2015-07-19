@@ -20,8 +20,8 @@ class MyQueue {
 public:
 	MyQueue();
 	virtual ~MyQueue();
-	MyQueue(const MyQueue&) = delete;
-	MyQueue& operator=(const MyQueue&) = delete;
+	//MyQueue(const MyQueue&) = delete; // cpp11 :(
+	//MyQueue& operator=(const MyQueue&) = delete; // cpp11 :(
 	/**
 	 * Wert in Queue ablegen
 	 * @param x abzulegender Wert
@@ -57,11 +57,11 @@ public:
 private:
 	struct ElementT {
 		T value;
-		ElementT *previous = 0;
-		ElementT *next = 0;
+		ElementT *previous;
+		ElementT *next;
 	};
-	ElementT* head;
-	ElementT* tail;
+	ElementT* head; // cpp11 :(
+	ElementT* tail; // cpp11 :(
 };
 template <typename T>
 MyQueue<T>::MyQueue() {
@@ -85,6 +85,7 @@ void MyQueue<T>::enQueue (const T& x) {
 	ElementT* tmp = new ElementT;
 	if(isEmpty()){
 		head = tmp;
+		tmp->next = NULL;
 	}else{
 		tail->previous = tmp;
 		tmp->next = tail;
