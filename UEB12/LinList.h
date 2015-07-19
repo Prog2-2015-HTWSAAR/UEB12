@@ -16,86 +16,92 @@ class LinListException : public ElementException {
 public:
     LinListException(const string& msg = "") : ElementException(msg) {}
 };
-
-template <class T> class LinList {
+/**
+ * Doppelt-verkettete Lineare Liste
+ * 
+ * @author	folz
+ * @version 
+ * @date	20.05.2012
+ */
+class LinList {
 public:
 	/**
 	* @brief Konstruktor
 	*/
-	template<T> LinList();
+	LinList();
 	/**
 	 * Kopierkonstruktor
 	 * @param linlist Referenz auf zu kopierendes Objekt
 	 */
-	template<T> LinList(const LinList&);
+	LinList(const LinList&);
 	/**
 	* @brief Dekonstruktor
 	*/
-	template<T> ~LinList();
-	template<T> LinList& operator=(const T);
+	~LinList();
+	LinList& operator=(const LinList& linList);
 	/**
 	* @brief push_back Haengt Element hinten an die Liste an
 	* @param t Wert der in die Liste Aufgenommen werden soll
 	*/
-	template<T> void push_back(InhaltTyp T);
+	void push_back (InhaltTyp t);
 	/**
 	* @brief push_front Haengt Element vorne an die Liste an
 	* @param t Wert der in die Liste Aufgenommen werden soll
 	*/
-	template<T>	void push_front(InhaltTyp T);
+	void push_front(InhaltTyp t);
 	/**
 	* @brief pop_back Entfernt letztes Element in der Liste
 	*/
-	template<T>	void pop_back();
+	void pop_back();
 	/**
 	* @brief pop_front Entfernt erstes Element in der Liste
 	*/
-	template<T>	void pop_front();
+	void pop_front();
 	/**
 	* @brief insert Fuegt Element vor pos ein
 	* @param pos Position des Obj, welches der neue Nachfolger werden soll
 	* @param t Wert der in die Liste Aufgenommen werden soll
 	*/
-	template<T>	void insert(int pos, InhaltTyp T);
+	void insert(int pos, InhaltTyp t);
 	/**
 	* @brief erase Entfernt Element auf pos
 	* @param pos Position des zu loeschenden Obj
 	*/
-	template<T> void erase(int pos);
+	void erase(int pos);
 	/**
 	* @brief clear Entfernt alle Elemente der Liste
 	*/
-	template<T>	void clear();
+	void clear();
 	/**
 	* @brief isEmpty Pruefung auf leer
 	* @returns true == empty false == non empty
 	*/
-	template<T>	bool isEmpty();
+	bool isEmpty();
 	/**
 	 * @brief gibt den Inhalt der Liste als String zurueck
 	 * @returns Stringrepresentation des LinList-Objekts
 	 */
-	template<T>	string toString() const;
+	string toString() const;
 	/**
 	 * @brief <<Operator zur Ausgabe in einen Stream
 	 * @param o Streamreferenz
 	 * @param linList Listenreferenz
 	 * @returns Referenz auf Stream mit angehaengtem LinListString
 	 */
-	template<T> friend ostream& operator<< (ostream& o, const LinList& linList);
+	friend ostream& operator<< (ostream& o, const LinList& linList);
 	/**
 	 * @brief >>Operator zur Eingabe durch einen Stream
 	 * @param i Streamreferenz
 	 * @param linList Listenreferenz
 	 * @returns Referenz auf Stream mit entnommenem LinListString
 	 */
-	template<T> friend istream& operator>> (istream& i, LinList& linList);
+	friend istream& operator>> (istream& i, LinList& linList);
 	/**
 	* @brief Operator[] zum Ausgeben einens Elements
 	* @param pos position
 	* @returns Referenz auf objekt
 	*/
-	template<T> ListElement& operator[](T);
+	ListElement& operator[](int pos);
 
 //	const ListElement& operator[](int pos) const;
 	/**
@@ -103,26 +109,26 @@ public:
 	* @param linList Listenreferenz
 	* @returns Referenz auf Stream mit angehaengtem obj
 	*/
-	template<T>	LinList& operator+=(LinList& linList);
+	LinList& operator+=(LinList& linList);
 	/**
 	* @brief Operator== Vergleicht obj
 	* @param linList Listenreferenz
 	* @returns ergebnis bool value
 	*/
-	template<T>	bool operator==(LinList& linList);
+	bool operator==(LinList& linList);
 	/**
 	* @brief Operator!= Vergleicht obj
 	* @param linList Listenreferenz
 	* @returns ergebnis bool value
 	*/
-	template<T>	bool operator!=(LinList& linList);
+	bool operator!=(LinList& linList);
 	/**
 	* @brief Operator+ Erzeugt neues obj mit den werten 2er objs
 	* @param linList1 Listenreferenz1
 	* @param linList2 Listenreferenz2
 	* @returns Referenz auf objekt
 	*/
-	template<T>	friend LinList& operator+(LinList& linList1, LinList& linList2);
+	friend LinList& operator+(LinList& linList1, LinList& linList2);
 	static const char* MELDUNG_LISTE_LEER;
 	static const char* MELDUNG_FALSCHE_POS;
 	static const char* ADD_SPACE;
