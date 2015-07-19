@@ -1,0 +1,169 @@
+﻿<?xml version="1.0"?>
+<DE_DE>
+  <SEPERATOR>
+    <SEPERATOR_STD>
+      -------------------------------
+    </SEPERATOR_STD>
+    <SEPERATOR_LINLIST_BLOCK>
+      -------------------------------
+      ------------linListe-----------
+      -------------------------------
+    </SEPERATOR_LINLIST_BLOCK>
+    <SEPERATOR_AUTOMATIC_TEST_BLOCK>
+      -------------------------------
+      ---------AUTOMATIC-TEST--------
+      -------------------------------
+    </SEPERATOR_AUTOMATIC_TEST_BLOCK>
+    <SEPERATOR_MANUELL_BLOCK>
+      -------------------------------
+      ------------MANUELL------------
+      -------------------------------
+    </SEPERATOR_MANUELL_BLOCK>
+    <SEPERATOR_DELETE_LISTE>
+      ---------DELETE-LISTE----------
+    </SEPERATOR_DELETE_LISTE>
+    <SEPERATOR_INSERT>
+      ------------INSERT-------------
+    </SEPERATOR_INSERT>
+    <SEPERATOR_ERASE>
+      ------------ERASE--------------
+    </SEPERATOR_ERASE>
+    <SEPERATOR_CLEAR>
+      ------------CLEAR--------------
+    </SEPERATOR_CLEAR>
+    <SEPERATOR_PUSH>
+      -------------PUSH--------------
+    </SEPERATOR_PUSH>
+    <SEPERATOR_POP>
+      -------------POP---------------
+    </SEPERATOR_POP>
+    <SEPERATOR_BACKUP>
+      -------------BACKUP------------
+    </SEPERATOR_BACKUP>
+  </SEPERATOR>
+  <ERROR_SECTION>
+    <INPUT_E>
+      -! FEHLERHAFTE EINGABE !-
+    </INPUT_E>
+    <STD_E>
+      FEHLER!!
+    </STD_E>
+  </ERROR_SECTION>
+  <DIALOG>
+    <MAINDIALOG>
+      (1) Automatischer Test
+      (2) Manueller Test
+      (0) Zurueck zur Sprachauswahl
+
+      Ihre Wahl:
+    </MAINDIALOG>
+    <MANUELLDIALOG>
+      (1 )  Push back
+      (2 )  Push front
+      (3 )  Pop back
+      (4 )  Pop front
+      (5 )  Vor Position Einfuegen
+      (6 )  Position Loeschen
+      (7 )  Aufraumen
+      (8 )  Liste Einlesen
+      (9 )  Listen Backup speichern
+      (10)  Listen Backup laden
+      (0 )  Zurueck zum Main Dialog
+
+      Ihre Wahl:
+    </MANUELLDIALOG>
+  </DIALOG>
+  <AUTOMATIC_TEST_PHRASES>
+    <HYPHEN>
+      -
+    </HYPHEN>
+    <A_INIT_PUSH>
+      -INIT- WERT:
+    </A_INIT_PUSH>
+    <A_PUSH_BACK>
+      -PUSH BACK- WERT:
+    </A_PUSH_BACK>
+    <A_PUSH_FRONT>
+      -PUSH FRONT- WERT:
+    </A_PUSH_FRONT>
+    <A_POP_BACK>
+      -POP BACK-
+    </A_POP_BACK>
+    <A_POP_FRONT>
+      -POP FRONT-
+    </A_POP_FRONT>
+    <A_INSERT>
+      -INSERT- WERT:
+    </A_INSERT>
+    <A_ERASE>
+      -ERASE- POSITION:
+    </A_ERASE>
+    <A_READ_INPUT_STREAM>
+      -EINGABE STREAM LESEN-
+    </A_READ_INPUT_STREAM>
+    <A_CLEAR>
+      -CLEAR-
+    </A_CLEAR>
+    <A_POP_EMPTY>
+      -POP EMPTY LIST-
+    </A_POP_EMPTY>
+    <A_INIT>
+      INIT
+    </A_INIT>
+    <A_BACK>
+      BACK
+    </A_BACK>
+    <A_FRONT>
+      FRONT
+    </A_FRONT>
+    <A_IMHERE>
+      HIER
+    </A_IMHERE>
+    <A_HIGH>
+      HIGH
+    </A_HIGH>
+    <A_LOW>
+      LOW
+    </A_LOW>
+    <A_INPUT_STREAM>
+      -EINGABE STREAM- WERT:
+    </A_INPUT_STREAM>
+    <A_INPUT_STREAM_VALUE>
+      A B C D NIL
+    </A_INPUT_STREAM_VALUE>
+  </AUTOMATIC_TEST_PHRASES>
+  <ADDITIONAL_PHRASES>
+    <COPY>
+      ERSTER WERT linListe ZWEITER WERT linListeCopy
+    </COPY>
+    <PHRASE_NAME>
+      NAME:
+    </PHRASE_NAME>
+    <PHRASE_POSITION>
+      Position:
+    </PHRASE_POSITION>
+    <PHRASE_READ_STREAM>
+      Mehrere eingaben bis NIL getrennt mit Leerzeichen!!
+      ->
+    </PHRASE_READ_STREAM>
+    <PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION>
+      Daten gehen verloren! Weiter? (j)=Ja:
+    </PHRASE_ELEMENT_DELETE_BACK_CONFIRMATION>
+    <PHRASE_ELEMENT_DELETE_CONFIRMATION>
+      ELEMENT wirklich loeschen? (j)=Ja:
+    </PHRASE_ELEMENT_DELETE_CONFIRMATION>
+    <PHRASE_CLEAR_CONFIRMATION>
+      linListe wirklich leeren? (j)=Ja:
+    </PHRASE_CLEAR_CONFIRMATION>
+    <PHRASE_LOAD_CONFIRMATION>
+      aktuelle Liste verwerfen? (j)=Ja:
+    </PHRASE_LOAD_CONFIRMATION>
+    <PHRASE_SAVE_CONFIRMATION>
+      Backup ueberschreiben? (j)=Ja:
+    </PHRASE_SAVE_CONFIRMATION>
+    <CONFIRM_DELETE>
+      j
+    </CONFIRM_DELETE>
+
+  </ADDITIONAL_PHRASES>
+</DE_DE>
