@@ -19,10 +19,12 @@ const char* LinList::CHAINED_LIST = "Linked List: ";
 const char* LinList::ELEMENTS = " Element(s)\n";
 const char* LinList::NIL_PHRASE = "NIL";
 const char* LinList::EMPTY_CHAR_ARRAY = "";
+
 /**
 * @brief Konstruktor
 */
-LinList::LinList() {
+
+template <class T> LinList::LinList() {
 	this->first = 0;
 	this->last = 0;
 	this->size = 0;
@@ -31,20 +33,20 @@ LinList::LinList() {
 * @brief Kopierkonstruktor
 * @param linlist Referenz auf zu kopierendes Objekt
 */
-LinList::LinList(const LinList& linlist){
+template <class T> LinList::LinList(const T){
 	this->size = 0;
-	copyElements(linlist);
+	copyElements(T);
 }
 /**
 * @brief Dekonstruktor
 */
-LinList::~LinList() {
+template <class T> LinList::~LinList() {
 	clear();
 }
 
-LinList& LinList::operator=(const LinList& linlist){
+template <class T> LinList& LinList::operator=(const T){
 	//Zuweisung auf mich selbst?
-	if(this == &linlist){
+	if(this == T){
 		return *this;
 	}
 	// bisherige ListElement-Objekte destruieren
@@ -58,7 +60,7 @@ LinList& LinList::operator=(const LinList& linlist){
 * @brief push_back Haengt Element hinten an die Liste an
 * @param t Wert der in die Liste Aufgenommen werden soll
 */
-void LinList::push_back(InhaltTyp t) {
+template <class T> void LinList::push_back(InhaltTyp t) {
 	ListElement* tmp = new ListElement(t);
 	if(isEmpty()){
 		first = tmp;
@@ -73,7 +75,7 @@ void LinList::push_back(InhaltTyp t) {
 * @brief push_front Haengt Element vorne an die Liste an
 * @param t Wert der in die Liste Aufgenommen werden soll
 */
-void LinList::push_front(InhaltTyp t) {
+template <class T> void LinList::push_front(InhaltTyp t) {
 	ListElement* tmp = new ListElement(t);
 	if(isEmpty()){
 		last = tmp;
@@ -87,7 +89,7 @@ void LinList::push_front(InhaltTyp t) {
 /**
 * @brief pop_back Entfernt letztes Element in der Liste
 */
-void LinList::pop_back() {
+template <class T> void LinList::pop_back() {
 	if(isEmpty()){
 		throw LinListException(MELDUNG_LISTE_LEER);
 	}
@@ -105,7 +107,7 @@ void LinList::pop_back() {
 /**
 * @brief pop_front Entfernt erstes Element in der Liste
 */
-void LinList::pop_front() {
+template <class T> void LinList::pop_front() {
 	if(isEmpty()){
 		throw LinListException(MELDUNG_LISTE_LEER);
 	}
@@ -125,7 +127,7 @@ void LinList::pop_front() {
 * @param pos Position des Obj, welches der neue Nachfolger werden soll
 * @param t Wert der in die Liste Aufgenommen werden soll
 */
-void LinList::insert(int pos, InhaltTyp t){
+template <class T> void LinList::insert(int pos, InhaltTyp t){
 	int suchIndex = 2; //Start bei zwei wegen Vorgaengersuche
 	ListElement* tmp1 = first;
 	ListElement* tmp2 = NULL;
@@ -162,7 +164,7 @@ void LinList::insert(int pos, InhaltTyp t){
 * @brief erase Entfernt Element auf pos
 * @param pos Position des zu loeschenden Obj
 */
-void LinList::erase(int pos){
+template <class T> void LinList::erase(int pos){
 	int suchIndex = 1;
 	ListElement* tmp = first;
 	if ((size_t)pos < 1 || (size_t)pos > size){
@@ -195,7 +197,7 @@ void LinList::erase(int pos){
 /**
 * @brief clear Entfernt alle Elemente der Liste
 */
-void LinList::clear(){
+template <class T> void LinList::clear(){
 	while(!isEmpty()){
 		pop_back();
 	}
@@ -204,14 +206,14 @@ void LinList::clear(){
 * @brief isEmpty Pruefung auf leer
 * @returns true == empty false == non empty
 */
-bool LinList::isEmpty(){
+template <class T> bool LinList::isEmpty(){
 	return (size == 0);
 }
 /**
  * @brief gibt den Inhalt der Liste als String zurueck
  * @returns Stringrepresentation des LinList-Objekts
  */
-string LinList::toString() const {
+template <class T> string LinList::toString() const {
 	ostringstream o;
 	o << CHAINED_LIST << size << ELEMENTS;
 	ListElement* tmp = first;
@@ -229,7 +231,7 @@ string LinList::toString() const {
  * @param linList Listenreferenz
  * @returns Referenz auf Stream mit angehaengtem LinListString
  */
-ostream& operator<<(ostream& o, const LinList& linList){
+template <class T> ostream& operator<<(ostream& o, const LinList& linList){
 	return o << linList.toString();
 }
 /**
@@ -238,7 +240,7 @@ ostream& operator<<(ostream& o, const LinList& linList){
  * @param linList Listenreferenz
  * @returns Referenz auf Stream mit entnommenem LinListString
  */
-istream& operator>> (istream& i, LinList& linList){
+template <class T> istream& operator>> (istream& i, LinList& linList){
 	linList.clear();
 	InhaltTyp t = LinList::EMPTY_CHAR_ARRAY;
 	while (i >> t && t != LinList::NIL_PHRASE){
@@ -251,7 +253,7 @@ istream& operator>> (istream& i, LinList& linList){
 * @param pos position
 * @returns Referenz auf objekt
 */
-ListElement& LinList::operator[] (int pos){
+template <class T> ListElement& LinList::operator[] (int pos){
 	int suchIndex = 1;
 	ListElement* tmp = first;
 	if ((size_t)pos < 1 || (size_t)pos > size){
@@ -281,7 +283,7 @@ ListElement& LinList::operator[] (int pos){
 * @param linList Listenreferenz
 * @returns Referenz auf Stream mit angehaengtem obj
 */
-LinList& LinList::operator+= (LinList& linList){
+template <class T> LinList& LinList::operator+= (LinList& linList){
 	copyElements(linList);
 	return *this;
 }
@@ -290,7 +292,7 @@ LinList& LinList::operator+= (LinList& linList){
 * @param linList Listenreferenz
 * @returns ergebnis bool value
 */
-bool LinList::operator== (LinList& linList){
+template <class T> bool LinList::operator== (LinList& linList){
 	bool ergebnis = true;
 	ListElement* tmp1 = first;
 	ListElement* tmp2 = linList.first;
@@ -312,7 +314,7 @@ bool LinList::operator== (LinList& linList){
 * @param linList Listenreferenz
 * @returns ergebnis bool value
 */
-bool LinList::operator!= (LinList& linList){
+template <class T> bool LinList::operator!= (LinList& linList){
 	return !(*this == linList);
 }
 /**
@@ -321,7 +323,7 @@ bool LinList::operator!= (LinList& linList){
 * @param linList2 Listenreferenz2
 * @returns Referenz auf objekt
 */
-LinList& operator+(LinList& linList1, LinList& linList2){
+template <class T> LinList& operator+(LinList& linList1, LinList& linList2){
 	LinList* tmp = new LinList(linList1);
 	*tmp += linList2;
 	return *tmp;
@@ -330,7 +332,7 @@ LinList& operator+(LinList& linList1, LinList& linList2){
 * @brief copyElements Kopierfunktion
 * @param linList Referenz auf LinListen Obj
 */
-void LinList::copyElements(const LinList& linList){
+template <class T> void LinList::copyElements(const LinList& linList){
 	ListElement* tmp = linList.first;
 
 	while(tmp != NULL){
