@@ -71,6 +71,7 @@ public:
 	/**
 	* @brief readIntegerInput read in int
 	*/
+	void clearInput();
 	int readIntegerInput();
 	/**
 	* @brief readIntegerInput read in double

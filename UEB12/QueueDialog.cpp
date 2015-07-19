@@ -57,7 +57,7 @@ QueueDialog::~QueueDialog() {}
 * @details HauptDialog Auswahl Auto Manuell Exit
 */
 void initDia(){
-	Queue q = new Queue;
+	Queue* q = NULL;
 	
 }
 void QueueDialog::qDialog(string &fileName) {
