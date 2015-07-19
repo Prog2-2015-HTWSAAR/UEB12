@@ -7,13 +7,13 @@
 * @date 14.06.2015
 */
 #include "QueueDialog.h"
-#include "Person.h"
 #include <string>
 #include <iostream>
 #include <cstring>
 #include <fstream>
 #include <math.h>
-#include "Queue.h"
+#include <stdexcept>
+
 //Konstanten
 //Seperators
 const char* QueueDialog::SPACER = " ";
@@ -56,36 +56,39 @@ QueueDialog::~QueueDialog() {}
 * @brief QueueDialog::mainDialog()
 * @details HauptDialog Auswahl Auto Manuell Exit
 */
-void initDia(){
-	Queue* q = NULL;
+void QueueDialog::initDialog(){
+	Queue<Person>* q = NULL;
+	qDialog(q);
 	
 }
-void QueueDialog::qDialog(string &fileName) {
-	string error_input = parsePhrases(fileName, PARSE_INPUT_ERROR);
-	string seperator_LinListe = parsePhrases(fileName,
-		PARSE_SEPERATOR_LINLIST_BLOCK);
-	string main_dialog = parsePhrases(fileName, PARSE_MAINDIALOG) + SPACER;
+void QueueDialog::qDialog(Queue<Person>* q) {
 	int answer;
+	Person person = Person("Last","First");
 	do {
-		cout << seperator_LinListe << endl << main_dialog;
+		cout << "seperator_LinListe" << endl << "main_dialog";
 		answer = readIntegerInput();
 		switch (answer) {
 		case EXIT:
 			break;
 		case ENQUEUE:
+				q->enqueue(person);
 			break;
 		case DEQUEUE:
-			dequeue();
+			q->dequeue();
 			break;
 		default:
-			cout << error_input << endl;
+			cout << "error_input" << endl;
 			break;
 		}
 	} while (answer != EXIT);
 }
 
-void QueueDialog::enqueue(Person &Pers){}
-void QueueDialog::dequeue(){}
+void QueueDialog::enqueue(Person &Pers){
+
+}
+void QueueDialog::dequeue(){
+
+}
 
 string QueueDialog::parsePhrases(string fileName, string begin) {
 	fstream file;

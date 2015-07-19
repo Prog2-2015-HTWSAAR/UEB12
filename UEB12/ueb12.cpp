@@ -10,15 +10,17 @@
 * Main Funktion
 */
 #include <iostream>
-#include "ListenDialog.h"
+#include "QueueDialog.h"
 using namespace std;
 
 /**
 * @brief Main Function
 */
 int main(){
-	ListenDialog listenDialog;
-	listenDialog.initLanguage();
+//	ListenDialog listenDialog;
+//	listenDialog.initLanguage();
+	QueueDialog queueDialog;
+	queueDialog.initDialog();
 	return 0;
 }
  

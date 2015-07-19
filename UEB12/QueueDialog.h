@@ -10,7 +10,8 @@
 #include "LinList.h"
 #include <iostream>
 #include <sstream>      
-
+#include "Person.h"
+#include "Queue.h"
 #ifndef QUEUEDIALOG_H_
 #define QUEUEDIALOG_H_
 enum LanguageDialogOption{ CLOSEPROGRAM, GERMAN, ENGLISH, HODOR, START_MAINDIALOG, runAgain };
@@ -63,8 +64,9 @@ public:
 	/**
 	* @brief Dekonstruktor
 	*/
-	virtual ~QueueDialog(){};
-	void qDialog(string &fileName);
+	virtual ~QueueDialog();
+	void initDialog();
+	void qDialog(Queue<Person>* q);
 	void enqueue(Person &Pers);
 	void dequeue();
 	bool fileExists(string fileName);

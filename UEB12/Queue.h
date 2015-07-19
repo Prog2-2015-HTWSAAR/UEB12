@@ -10,8 +10,8 @@ public:
 	Queue(const Queue<Element> &OtherQueue);
 	~Queue(void);
 
-	void Enqueue(const Element &Item);
-	Element Dequeue(void);
+	void enqueue(const Element &Item);
+	Element dequeue(void);
 	inline int ElementNum(void);
 
 protected:
@@ -53,7 +53,7 @@ Queue<Element>::~Queue(void)
 }
 
 template <class Element>
-void Queue<Element>::Enqueue(const Element &Item)
+void Queue<Element>::enqueue(const Element &Item)
 {
 	assert(ElementCount < MAX_NUM);
 
@@ -65,7 +65,7 @@ void Queue<Element>::Enqueue(const Element &Item)
 }
 
 template <class Element>
-Element Queue<Element>::Dequeue(void)
+Element Queue<Element>::dequeue(void)
 {
 	assert(ElementCount > 0);
 
@@ -83,5 +83,11 @@ inline int Queue<Element>::ElementNum(void)
 {
 	return ElementCount;
 }
-
+template <class Element>
+ostream& operator<<(ostream& o, const Queue<Element>& q){
+	for (int i = 0; i < q.MAX_NUM; ++i) {
+		o << q.Data[i];
+		return o;
+	}
+}
 #endif 
