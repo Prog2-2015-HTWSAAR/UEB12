@@ -16,6 +16,6 @@ std::ostream& operator<<(std::ostream& o, const Person& artikel) {
 }
 std::string Person::toString() const {
 	ostringstream o;
-	o << name << vorName << "\t";
+	o << vorName << " " << name ;
 	return o.str();
 }

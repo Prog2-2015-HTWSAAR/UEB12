@@ -11,7 +11,7 @@
 #include <iostream>
 #include <sstream>      
 #include "Person.h"
-#include "Queue.h"
+#include "MyQueue.h"
 #ifndef QUEUEDIALOG_H_
 #define QUEUEDIALOG_H_
 enum LanguageDialogOption{ CLOSEPROGRAM, GERMAN, ENGLISH, HODOR, START_MAINDIALOG, runAgain };
@@ -66,10 +66,11 @@ public:
 	*/
 	virtual ~QueueDialog();
 	void initDialog();
-	void qDialog(Queue<Person>* q);
-	void enqueue(Person &Pers);
-	void dequeue();
+	void qDialog(MyQueue<Person>* q);
+	void outputOptions();
 	bool fileExists(string fileName);
+
+	Person* lesePerson();
 	/**
 	* @brief readIntegerInput read in int
 	*/

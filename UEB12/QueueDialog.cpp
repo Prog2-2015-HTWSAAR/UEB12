@@ -57,39 +57,46 @@ QueueDialog::~QueueDialog() {}
 * @details HauptDialog Auswahl Auto Manuell Exit
 */
 void QueueDialog::initDialog(){
-	Queue<Person>* q = NULL;
+	MyQueue<Person>* q = new MyQueue<Person>();
 	qDialog(q);
 	
 }
-void QueueDialog::qDialog(Queue<Person>* q) {
+void QueueDialog::qDialog(MyQueue<Person>* q) {
 	int answer;
-	Person person = Person("Last","First");
-	do {
-		cout << "seperator_LinListe" << endl << "main_dialog";
-		answer = readIntegerInput();
-		switch (answer) {
-		case EXIT:
-			break;
-		case ENQUEUE:
-				q->enqueue(person);
-			break;
-		case DEQUEUE:
-			q->dequeue();
-			break;
-		default:
-			cout << "error_input" << endl;
-			break;
-		}
-	} while (answer != EXIT);
+	Person* personpointer = NULL;
+		do {
+			try {
+				cout << *q << endl;
+
+				outputOptions();
+				answer = readIntegerInput();
+				switch (answer) {
+				case EXIT:
+					break;
+				case ENQUEUE:
+					personpointer = lesePerson();
+					q->enQueue(*personpointer);
+					break;
+				case DEQUEUE:
+					cout << q->deQueue() << " dequeued" << endl;
+					break;
+				default:
+					cout << "error_input" << endl;
+					break;
+				}
+			} catch (logic_error& e) {
+				cout << "Fehler: "<< e.what() << endl;
+			}
+		} while (answer != EXIT);
+
 }
 
-void QueueDialog::enqueue(Person &Pers){
-
+void QueueDialog::outputOptions(){
+	cout << "---------------------" << endl;
+	cout << "(1) Enqueue Person" << endl;
+	cout << "(2) Dequeue Person" << endl;
+	cout << "(0) Exit" << endl;
 }
-void QueueDialog::dequeue(){
-
-}
-
 string QueueDialog::parsePhrases(string fileName, string begin) {
 	fstream file;
 	string anfang = "<" + begin + ">";
@@ -133,6 +140,15 @@ string QueueDialog::parsePhrases(string fileName, string begin) {
 	return ausgabe;
 }
 
+Person* QueueDialog::lesePerson(){
+	string nachname = "";
+	string vorname = "";
+	cout << "Nachname: ";
+	nachname = readStringInput();
+	cout << "Vorname: ";
+	vorname = readStringInput();
+	return new Person(nachname, vorname);
+}
 void QueueDialog::clearInput() {
 	cin.clear();
 	cin.ignore(HIGH_VALUE, '\n');

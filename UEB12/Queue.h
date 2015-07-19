@@ -2,6 +2,13 @@
 #define __QUEUE_H__
 
 #include <assert.h>  
+using namespace std;
+
+// ist seit neuestem notwendig
+//template<typename T> class Queue;
+//template<typename T>
+//ostream& operator<<(ostream&, const Queue<T>&);
+
 template <class Element>
 class Queue
 {
@@ -13,7 +20,7 @@ public:
 	void enqueue(const Element &Item);
 	Element dequeue(void);
 	inline int ElementNum(void);
-
+	friend ostream& operator<< <>(ostream& o, const Queue<Element>& q);
 protected:
 	Element *Data;
 	const int MAX_NUM;
@@ -86,8 +93,8 @@ inline int Queue<Element>::ElementNum(void)
 template <class Element>
 ostream& operator<<(ostream& o, const Queue<Element>& q){
 	for (int i = 0; i < q.MAX_NUM; ++i) {
-		o << q.Data[i];
-		return o;
+		o << q.Data[i] << " ";
 	}
+	return o;
 }
 #endif 
