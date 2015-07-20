@@ -121,9 +121,9 @@ T MyQueue<T>::deQueue()  {
 	if (head != NULL){
 		head->next = NULL;
 	}
-	if (head != NULL){
-		head = NULL;
-	}
+//	if (head != NULL){
+//		head = NULL;
+//	}
 	if(isEmpty()){
 		tail = NULL;
 	}
