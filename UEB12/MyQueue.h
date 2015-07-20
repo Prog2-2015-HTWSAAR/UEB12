@@ -32,14 +32,14 @@ public:
 	 * Wert aus Queue herausholen
 	 * Vorbedingung: Queue darf nicht leer sein
 	 * @return herausgeholter Wert
-	 * @throw logic_error wenn der Queue vorher leer war
+	 * @throw logic_error wenn die Queue vorher leer war
 	 */
 	T deQueue();
 	/**
 	 * Vordersten Wert erfragen
 	 * Vorbedingung: Queue darf nicht leer sein
 	 * @return herausgeholter Wert
-	 * @throw logic_error wenn der Queue vorher leer war
+	 * @throw logic_error wenn die Queue vorher leer war
 	  */
 	T front() const;
 	/**
@@ -70,8 +70,8 @@ private:
 */
 template <typename T>
 MyQueue<T>::MyQueue() {
-	head = 0;
-	tail = 0;
+	head = NULL;
+	tail = NULL;
 }
 /**
 * @brief ~MyQueue Dekonstruktor
@@ -80,7 +80,7 @@ template <typename T>
 MyQueue<T>::~MyQueue() {
 	// Komplette Liste loeschen
 	ElementT* tmp;
-	while (head != 0) {
+	while (head != NULL) {
 		tmp = head;
 		head = head->next;
 		delete tmp;
@@ -152,7 +152,7 @@ T MyQueue<T>::back() const  {
 */
 template <typename T>
 bool MyQueue<T>::isEmpty() const  {
-    return head == 0;
+    return head == NULL;
 }
 /**
 * @brief <<Operator zur Ausgabe in einen Stream
@@ -164,7 +164,7 @@ bool MyQueue<T>::isEmpty() const  {
 template<typename T>
 ostream& operator<<(ostream& o, const MyQueue<T>& s) {
 	typename MyQueue<T>::ElementT* p = s.tail;
-	while (p != 0) {
+	while (p != NULL) {
 		o << p->value << "\t";
 		p = p->next;
 	}
