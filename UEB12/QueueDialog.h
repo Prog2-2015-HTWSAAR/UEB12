@@ -7,44 +7,30 @@
 *
 * @date 14.06.2015
 */
-#include "LinList.h"
 #include <iostream>
 #include <sstream>      
 #include "Person.h"
 #include "MyQueue.h"
 #ifndef QUEUEDIALOG_H_
 #define QUEUEDIALOG_H_
-enum LanguageDialogOption{ CLOSEPROGRAM, GERMAN, ENGLISH, HODOR, START_MAINDIALOG, runAgain };
-enum MainDialogOption{ EXIT, ENQUEUE, DEQUEUE };
+enum MainDialogOptions{ EXIT_Q, ENQUEUE, DEQUEUE };
 
 
 class QueueDialog {
 public:
 	//Konstanten 
 	//Seperators
-	static const char* SPACER;
-	static const string PARSE_COPY;
-
-	//Errorphrasses
-	// LanguageDialog
-	static const string STD_LANG_NOT_FOUND;
-	static const string DE_DE_LANG_NOT_FOUND;
-	static const string EN_US_LANG_NOT_FOUND;
-	static const string HODOR_WESTEROS_LANG_NOT_FOUND;
-	static const string PARSE_LANGUAGEDIALOG;
-	static const string LANGUAGE_GERMAN;
-	static const string LANGUAGE_ENGLISH;
-	static const string LANGUAGE_HODOR;
-	static const string LANGUAGE_STD;
-	static const string STD_INP_PHRASE;
-	// Maindialog
-	static const string PARSE_SEPERATOR_LINLIST_BLOCK;
-	static const string PARSE_MAINDIALOG;
-
-	// Allgemein
-	static const string PARSE_INPUT_ERROR;
-	static const string PARSE_STD_ERROR;
-
+	static const char* STD_ERROR;
+	static const string SEPERATOR;
+	static const string SEPERATOR_Q;
+	static const string EN_QUEUE_OPTION;
+	static const string DE_QUEUE_OPTION;
+	static const string EXIT_OPTION;
+	static const string CHOSE_WISELY;
+	static const string LAST_NAME;
+	static const string SUR_NAME;
+	static const string DEQUEUED;
+	static const string EMPTY_STRING;
 	//const Int
 	static const int STD_ANSWER_VALUE;
 	static const int ZERO_VALUE;

@@ -16,28 +16,17 @@
 
 //Konstanten
 //Seperators
-const char* QueueDialog::SPACER = " ";
-const string QueueDialog::LANGUAGE_GERMAN = "de_DE.xml";
-const string QueueDialog::LANGUAGE_ENGLISH = "en_US.xml";
-const string QueueDialog::LANGUAGE_HODOR = "hodor_WESTEROS.xml";
-const string QueueDialog::LANGUAGE_STD = "std.xml";
-const string QueueDialog::STD_INP_PHRASE = "STD_INP_PHRASE";
-// const strings
-// Languagedialog
-const string QueueDialog::STD_LANG_NOT_FOUND = "Language std NOT Found";
-const string QueueDialog::DE_DE_LANG_NOT_FOUND = "DE_DE_LANG_NOT_FOUND";
-const string QueueDialog::EN_US_LANG_NOT_FOUND = "EN_US_LANG_NOT_FOUND";
-const string QueueDialog::HODOR_WESTEROS_LANG_NOT_FOUND ="HODOR_WESTEROS_LANG_NOT_FOUND";
-const string QueueDialog::PARSE_LANGUAGEDIALOG = "LANGUAGE_DIALOGE";
-// Maindialog
-const string QueueDialog::PARSE_SEPERATOR_LINLIST_BLOCK =
-"SEPERATOR_LINLIST_BLOCK";
-const string QueueDialog::PARSE_MAINDIALOG = "MAINDIALOG";
-//ManuellDialog
-
-// Allgemein
-const string QueueDialog::PARSE_INPUT_ERROR = "INPUT_E";
-const string QueueDialog::PARSE_STD_ERROR = "STD_E";
+const char* QueueDialog::STD_ERROR = "gooby y u do dis";
+const string QueueDialog::LAST_NAME = "Nachname: ";
+const string QueueDialog::SUR_NAME = "Vorname: ";
+const string QueueDialog::DEQUEUED = " dequeued";
+const string QueueDialog::EMPTY_STRING = "";
+const string QueueDialog::SEPERATOR = "---------------------";
+const string QueueDialog::SEPERATOR_Q = "--------Queue--------";
+const string QueueDialog::EN_QUEUE_OPTION = "(1) Enqueue Person";
+const string QueueDialog::DE_QUEUE_OPTION = "(2) Dequeue Person";
+const string QueueDialog::EXIT_OPTION = "(0) Exit";
+const string QueueDialog::CHOSE_WISELY = "-> ";
 
 //const Int
 const int QueueDialog::STD_ANSWER_VALUE = -1;
@@ -66,87 +55,43 @@ void QueueDialog::qDialog(MyQueue<Person>* q) {
 	Person* personpointer = NULL;
 		do {
 			try {
-				cout << "--------Queue--------" << endl;
+				cout << SEPERATOR_Q << endl;
 				cout << *q << endl;
 
 				outputOptions();
 				answer = readIntegerInput();
 				switch (answer) {
-				case EXIT:
+				case EXIT_Q:
 					break;
 				case ENQUEUE:
 					personpointer = lesePerson();
 					q->enQueue(*personpointer);
 					break;
 				case DEQUEUE:
-					cout << q->deQueue() << " dequeued" << endl;
+					cout << q->deQueue() << DEQUEUED << endl;
 					break;
 				default:
-					cout << "error_input" << endl;
+					cout << STD_ERROR << endl;
 					break;
 				}
 			} catch (logic_error& e) {
-				cout << "Fehler: "<< e.what() << endl;
+				cout << STD_ERROR  << e.what() << endl;
 			}
-		} while (answer != EXIT);
+		} while (answer != EXIT_Q);
 
 }
 
 void QueueDialog::outputOptions(){
-	cout << "---------------------" << endl;
-	cout << "(1) Enqueue Person" << endl;
-	cout << "(2) Dequeue Person" << endl;
-	cout << "(0) Exit" << endl;
-}
-string QueueDialog::parsePhrases(string fileName, string begin) {
-	fstream file;
-	string anfang = "<" + begin + ">";
-	string ende = "</" + begin + ">";
-	string cache;
-	string line;
-	string ausgabe;
-	bool found = false;
-	bool firstRun = true;
-	bool stop = false;
-	bool streamWritten = false;
-	const char* constName = fileName.c_str();
-	file.open(constName);
-	while (getline(file, line)) {
-		trim(line);
-		if (!stop && found) {
-			if (!firstRun) {
-				ausgabe = ausgabe + cache;
-				streamWritten = true;
-			}
-			if (firstRun) {
-				firstRun = false;
-			}
-		}
-		if (found && !stop) {
-			if (strcmp(ende.c_str(), line.c_str()) == 0) {
-				stop = true;
-			}
-			else {
-				cache = line;
-				if (streamWritten) {
-					ausgabe = ausgabe + '\n';
-				}
-			}
-		}
-		if (strcmp(anfang.c_str(), line.c_str()) == 0 && !found) {
-			found = true;
-		}
-	}
-	file.close();
-	return ausgabe;
+	cout << SEPERATOR << endl << EN_QUEUE_OPTION << endl << DE_QUEUE_OPTION 
+		<< endl << EXIT_OPTION << endl << CHOSE_WISELY;
 }
 
 Person* QueueDialog::lesePerson(){
-	string nachname = "";
-	string vorname = "";
-	cout << "Nachname: ";
+	string nachname = EMPTY_STRING;
+	string vorname = EMPTY_STRING;
+	cout << LAST_NAME;
 	nachname = readStringInput();
-	cout << "Vorname: ";
+	cout << SUR_NAME;
 	vorname = readStringInput();
 	return new Person(nachname, vorname);
 }
@@ -181,21 +126,3 @@ string QueueDialog::readStringInput() {
 	return input;
 }
 
-bool QueueDialog::fileExists(string fileName) {
-	const char* constName = fileName.c_str();
-	ifstream infile(constName);
-	return infile.good();
-}
-
-void QueueDialog::trim(string& str) {
-	string trim_chars = " \t";
-	string::size_type pos = str.find_last_not_of(trim_chars);
-	if (pos != std::string::npos) {
-		str.erase(pos + 1);
-		pos = str.find_first_not_of(trim_chars);
-		if (pos != std::string::npos)
-			str.erase(0, pos);
-	}
-	else
-		str.erase(str.begin(), str.end());
-}
