@@ -62,13 +62,20 @@ private:
 	};
 	ElementT* head; // cpp11 :(
 	ElementT* tail; // cpp11 :(
+	int counter = 0;
 };
+/**
+* @brief MyQueue konstruktor
+* Rule 1. Do not talk about /b/.
+*/
 template <typename T>
 MyQueue<T>::MyQueue() {
 	head = 0;
 	tail = 0;
 }
-
+/**
+* @brief ~MyQueue Dekonstruktor
+*/
 template <typename T>
 MyQueue<T>::~MyQueue() {
 	// Komplette Liste loeschen
@@ -79,7 +86,9 @@ MyQueue<T>::~MyQueue() {
 		delete tmp;
 	}
 }
-
+/**
+* @brief enQueue
+*/
 template <typename T>
 void MyQueue<T>::enQueue (const T& x) {
 	ElementT* tmp = new ElementT;
@@ -92,11 +101,15 @@ void MyQueue<T>::enQueue (const T& x) {
 	}
 	tmp->value = x;
 	tail = tmp;
-
+	counter++;
 }
-
+/**
+* @brief deQueue
+* @returns top
+* Rule 90. It's never lupus.
+*/
 template <typename T>
-T MyQueue<T>::deQueue  ()  {
+T MyQueue<T>::deQueue()  {
 	if(isEmpty()){
 		throw logic_error("Queue ist leer!");
 	}
@@ -105,30 +118,50 @@ T MyQueue<T>::deQueue  ()  {
     ElementT *old = head;
     delete old;
     head = neu;
-	if (head != NULL){
+	if (head != NULL && counter != 1){
 		head->next = NULL;
+	}
+	if (head != NULL && counter == 1){
+		head = NULL;
 	}
 	if(isEmpty()){
 		tail = NULL;
 	}
+	counter--;
     return top;
 }
-
+/**
+* @brief front
+* @returns head->value
+*/
 template <typename T>
 T MyQueue<T>::front() const  {
     return head->value;
 }
 
+/**
+* @brief back
+* @returns  tail->value
+*/
 template <typename T>
 T MyQueue<T>::back() const  {
     return tail->value;
 }
-
+/**
+* @brief isEmpty Pruefung auf Empty
+* @returns head
+*/
 template <typename T>
 bool MyQueue<T>::isEmpty() const  {
     return head == 0;
 }
-
+/**
+* @brief <<Operator zur Ausgabe in einen Stream
+* @param o Streamreferenz
+* @param s const MyQueue<T>&
+* @returns Referenz auf Stream mit angehaengtem LinListString
+* Rule 118. Newfags must be tortured to death. No exceptions.
+*/
 template<typename T>
 ostream& operator<<(ostream& o, const MyQueue<T>& s) {
 	typename MyQueue<T>::ElementT* p = s.tail;

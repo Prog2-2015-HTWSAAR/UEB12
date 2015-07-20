@@ -51,16 +51,38 @@ public:
 	* @brief Dekonstruktor
 	*/
 	virtual ~QueueDialog();
+	/**
+	* @brief initDialog
+	// Rule 120. Nobody likes you.
+	*/
 	void initDialog();
+	// Rule 120.2. Except Pedobear
+	/**
+	* @brief qDialog Diealog fkt
+	* @param q MyQueue<Person>*
+	*/
 	void qDialog(MyQueue<Person>* q);
-	void outputOptions();
-	bool fileExists(string fileName);
 
+	/**
+	* @brief outputOptions Dialog legende
+	*/
+	void outputOptions();
+	/**
+	* @brief fileExists Pruefung auf existierende datei(wird nicht verwendet ist deko)
+	*/
+	bool fileExists(string fileName);
+	/**
+	* @brief lesePerson Einlesefkt fuer personen obj
+	* @returns new Person(nachname, vorname);
+	*/
 	Person* lesePerson();
+	/**
+	* @brief clearInput clears cin buffer
+	*/
+	void clearInput();
 	/**
 	* @brief readIntegerInput read in int
 	*/
-	void clearInput();
 	int readIntegerInput();
 	/**
 	* @brief readIntegerInput read in double
