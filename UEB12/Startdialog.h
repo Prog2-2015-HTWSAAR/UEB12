@@ -5,12 +5,13 @@
 class Startdialog
 {
 public:
-	enum startDial{ EXIT, QUEUE_DIALOG, LISTEN_DIALOG };
+	enum startDial{ EXIT, QUEUE_DIALOG, LISTEN_DIALOG, LIST_QUEUE };
 	static const string SEPERATOR;
 	static const string CHOSE_WISELY;
 	static const string OPTION_EXIT ;
 	static const string OPTION_QUEUE_DIALOG;
 	static const string OPTION_LISTEN_DIALOG;
+	static const string OPTION_LISTEN_QUEUE_DIALOG;
 	static const char* STD_ERROR;
 	static const int STD_ANSWER_VALUE;
 	static const int ZERO_VALUE;

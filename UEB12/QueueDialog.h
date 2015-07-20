@@ -11,10 +11,11 @@
 #include <sstream>      
 #include "Person.h"
 #include "MyQueue.h"
+#include "ListenQueue.h"
 #ifndef QUEUEDIALOG_H_
 #define QUEUEDIALOG_H_
-enum MainDialogOptions{ EXIT_Q, ENQUEUE, DEQUEUE };
-
+enum MainDialogOptions{ EXIT_Q, ENQUEUE, DEQUEUE, LISTOPTIONS };
+enum LQDialogOptions{ EXIT_LQ, PUSH_BACK_LQ, PUSH_FRONT_LQ, POP_BACK_LQ, POP_FRONT_LQ, INSERT_POS_LQ, DELETE_POS_LQ};
 
 class QueueDialog {
 public:
@@ -62,7 +63,23 @@ public:
 	* @param q MyQueue<Person>*
 	*/
 	void qDialog(MyQueue<Person>* q);
+	/**
+	 * @brief ListenQueue Init
+	 */
+	void initListDialog();
+	/**
+	 * @brief ListenQueue Dialog
+	 */
+	void qDialog(ListenQueue<Person>* q);
+	/**
+	 * @brieft ListenQueue Dialog
+	 */
+	void startLQDialog(ListenQueue<Person>* q);
 
+	/**
+	 * @brief ListenQueue Auswahlauswertung
+	 */
+	void chooseLQOption(ListenQueue<Person>* q, int choice);
 	/**
 	* @brief outputOptions Dialog legende
 	*/

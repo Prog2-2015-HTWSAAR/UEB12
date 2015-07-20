@@ -16,10 +16,17 @@ public:
 	/**
 	* @brief <<Operator zur Ausgabe in einen Stream
 	* @param o Streamreferenz
-	* @param artikel const Person&
+	* @param person const Person&
 	* @returns Referenz auf Stream mit angehaengtem LinListString
 	*/
-	friend ostream& operator<<(std::ostream& o, const Person& artikel);
+	friend ostream& operator<<(std::ostream& o, const Person& person);
+	/**
+	* @brief >>Operator zur Eingabe aus einem Stream
+	* @param i Streamreferenz
+	* @param person const Person&
+	* @returns Referenz auf Stream ohne LinListString
+	*/
+	friend istream& operator>>(std::istream& i, const Person& person);
 	/**
 	* @brief toString gibt den Inhalt der Person als String zurueck
 	* @returns Stringrepresentation des Person-Objekts

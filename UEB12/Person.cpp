@@ -11,8 +11,12 @@ void Person::ausgeben(std::ostream& o) const {
 	o << toString();
 }
 
-std::ostream& operator<<(std::ostream& o, const Person& artikel) {
-	return o << artikel.toString();
+std::ostream& operator<<(std::ostream& o, const Person& person) {
+	return o << person.toString();
+}
+std::istream& operator>>(std::istream& i, const Person& person) {
+	 i >> person.name >> person.vorName;
+	 return i;
 }
 std::string Person::toString() const {
 	ostringstream o;

@@ -5,6 +5,7 @@ const string Startdialog::CHOSE_WISELY = "-> ";
 const string Startdialog::OPTION_EXIT = "(0) EXIT";
 const string Startdialog::OPTION_QUEUE_DIALOG = "(1) QUEUE DIALOG";
 const string Startdialog::OPTION_LISTEN_DIALOG = "(2) LISTEN DIALOG";
+const string Startdialog::OPTION_LISTEN_QUEUE_DIALOG = " (3) LISTEN QUEUE (experimental)";
 const char* Startdialog::STD_ERROR = "gooby y u do dis";
 const int Startdialog::STD_ANSWER_VALUE = -1;
 const int Startdialog::ZERO_VALUE = 0;
@@ -21,9 +22,9 @@ void Startdialog::runStartDialog(){
 	QueueDialog queueDialog;
 	do{
 		cout << SEPERATOR << endl << OPTION_QUEUE_DIALOG << endl << OPTION_LISTEN_DIALOG << endl
-			<< OPTION_EXIT << endl << SEPERATOR << endl << CHOSE_WISELY;
+			<< OPTION_LISTEN_QUEUE_DIALOG << endl << OPTION_EXIT << endl << SEPERATOR << endl << CHOSE_WISELY;
 		answer = readIntegerInput();
-		if (answer == 3){
+		if (answer > 3){
 			answer = STD_ANSWER_VALUE;
 		}
 		switch (answer){
@@ -34,6 +35,9 @@ void Startdialog::runStartDialog(){
 			break;
 		case LISTEN_DIALOG:
 			listenDialog.initLanguage();
+			break;
+		case LIST_QUEUE:
+			queueDialog.initListDialog();
 			break;
 		default:
 			cout << STD_ERROR << endl;
