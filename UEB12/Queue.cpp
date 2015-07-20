@@ -1,1 +1,0 @@
-//rule 34 If it exists, there is porn of it. No exceptions
