@@ -16,7 +16,7 @@
 
 //Konstanten
 //Seperators
-const char* QueueDialog::STD_ERROR = "gooby y u do dis";
+const char* QueueDialog::STD_ERROR = "Fehler: ";
 const string QueueDialog::LAST_NAME = "Nachname: ";
 const string QueueDialog::SUR_NAME = "Vorname: ";
 const string QueueDialog::DEQUEUED = " dequeued";

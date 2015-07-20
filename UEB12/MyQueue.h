@@ -8,6 +8,7 @@
 #ifndef MYQUEUE_H_
 #define MYQUEUE_H_
 #include <iostream>
+#include <stdexcept>
 using namespace std;
 
 // ist seit neuestem notwendig
@@ -62,7 +63,6 @@ private:
 	};
 	ElementT* head; // cpp11 :(
 	ElementT* tail; // cpp11 :(
-	int counter = 0;
 };
 /**
 * @brief MyQueue konstruktor
@@ -94,6 +94,7 @@ void MyQueue<T>::enQueue (const T& x) {
 	ElementT* tmp = new ElementT;
 	if(isEmpty()){
 		head = tmp;
+		tmp->previous = NULL;
 		tmp->next = NULL;
 	}else{
 		tail->previous = tmp;
@@ -101,7 +102,6 @@ void MyQueue<T>::enQueue (const T& x) {
 	}
 	tmp->value = x;
 	tail = tmp;
-	counter++;
 }
 /**
 * @brief deQueue
@@ -118,16 +118,15 @@ T MyQueue<T>::deQueue()  {
     ElementT *old = head;
     delete old;
     head = neu;
-	if (head != NULL && counter != 1){
+	if (head != NULL){
 		head->next = NULL;
 	}
-	if (head != NULL && counter == 1){
+	if (head != NULL){
 		head = NULL;
 	}
 	if(isEmpty()){
 		tail = NULL;
 	}
-	counter--;
     return top;
 }
 /**

@@ -1,4 +1,5 @@
 #include "Startdialog.h"
+#include <math.h>
 const string Startdialog::SEPERATOR = "---------------------";
 const string Startdialog::CHOSE_WISELY = "-> ";
 const string Startdialog::OPTION_EXIT = "(0) EXIT";
